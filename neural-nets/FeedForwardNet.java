@@ -1,9 +1,12 @@
-
-
 import java.util.*;
 
 /*
-    A feed forward neural network
+    A feed forward neural network implemented with no outside libraries
+    Capable of training by
+        -backpropagation (default)
+        -genetic algorithm
+        -particle swarm optimization
+        -differential evolution
 
     @Author: Dave Miller
  */
@@ -125,7 +128,7 @@ public class FeedForwardNet {
         }
 
         /*
-            For GA
+            For GA, DE, etc.
          */
         public double[][] getWeights() { return weights; }
 
@@ -157,6 +160,7 @@ public class FeedForwardNet {
         2 in 2nd layer, etc.
 
         For classification, layers should be [numFeatures, ..., numClasses]
+        For regression, layers should be [numFeatures, ..., 1]
      */
     public FeedForwardNet(DataC[] trainingData, int[] layers, boolean isClassification) {
         this.data = trainingData;
