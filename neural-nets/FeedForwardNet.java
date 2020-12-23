@@ -183,6 +183,7 @@ public class FeedForwardNet {
     	this.eta = clone.eta;
     	this.isClassification = clone.isClassification;
     	this.fitness = clone.fitness;
+    	setWeights(clone.getWeights());
     }
 
 

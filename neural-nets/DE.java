@@ -1,5 +1,3 @@
-
-
 import java.util.*;
 
 public class DE {
@@ -31,17 +29,13 @@ public class DE {
         population = new FeedForwardNet[populationSize];
         
         //all of this is hard coded rn
-        mutationRate = 0.1; 
-        beta = 0.2;
+        mutationRate = 0.05;
+        beta = .1;
         crossoverProb = .5; //makes it the same as GA
 
         for (int i= 0; i< populationSize; i++) {
             population[i] = new FeedForwardNet(trainingData, layers, isClassification);
-           // List<double[][]> weights = population[i].getWeights();
-
         }
-        
-        
 	}
 	
 	
@@ -52,34 +46,21 @@ public class DE {
 		//calculate trail vector u_j(u_i?) = X1 + Beta(X2-X3)            Beta in [0,2]
 		      //X2 - X3 reverses the direction of the X2 vector? (should it be X3-X2?)
 		//return the trial vector
-		
-		Random rand = new Random();
-		
-		FeedForwardNet[] distinctVectors = new FeedForwardNet[3];
-		
-		//checking if the prev data is the same as the ones before
-		//if they are the same the choose again.
-		//set the distinct vectors into the array.
-		
-		int[] prevInt = new int[3];
-		for(int i = 0; i < 3; i++) {
-			int randomInt = rand.nextInt(population.length);
-			prevInt[i] = randomInt;
-			if(i != 0) {
-				if(randomInt == prevInt[i-1]) {
-					i--;
-					continue;
-				}
-			}
-			distinctVectors[i] = population[randomInt];
+
+		Set<FeedForwardNet> distinct = new HashSet<>();
+
+		while(distinct.size() < 3) {
+			distinct.add(population[(int)(Math.random() * (population.length-1))]);
 		}
-	
+
+		FeedForwardNet[] distinctVectors = new FeedForwardNet[3];
+		distinct.toArray(distinctVectors);
+
 		List<double[][]> X1 = distinctVectors[0].getWeights();
 		List<double[][]> X2 = distinctVectors[1].getWeights();
 		List<double[][]> X3 = distinctVectors[2].getWeights();
 
 		List<double[][]> trialWeights = new ArrayList<>();
-		
 		
 		int z = 0;
 		for(double[][] layer : X1) {
@@ -96,7 +77,6 @@ public class DE {
 		
 		//Changing weights
 		targetVector.setWeights(trialWeights);
-		//trialVector.setNormFeatures(trialFeatures);
 		return targetVector;
 	}
 	
@@ -119,21 +99,15 @@ public class DE {
 		
 		List<double[][]> offspringWeights = new ArrayList<>();
 		
-		
 		int z = 0;
 		for(double[][] layer : targetWeights) {
 			double[][] newWeights = new double[layer.length][layer[0].length];
 			for(int i= 0; i< layer.length; i++) {
                 for(int j= 0; j< layer[0].length; j++) {
-                	Random rand = new Random();
-        			double double_random = rand.nextDouble();
-        			if(double_random <= crossoverProb) {
+        			if(Math.random() <= crossoverProb) {
         				newWeights[i][j] = targetWeights.get(z)[i][j];
-
-//        				System.out.println("Weight at " + i + ", " + j + " swapped");
-//        				System.out.println("\tchild1 gets parent2 weight" + newWeights[i][j]);
-
-        			}else {
+        			}
+        			else {
         				newWeights[i][j] = trialWeights.get(z)[i][j];
         			}
                 }
@@ -170,8 +144,6 @@ public class DE {
 	    }
 
 	public void DiffEvolution(int generations) {
-		
-        
     	// While loop (idk what condition needs to be ^-^)
     	//    for each individual
     	//		  the individual is the target vector
@@ -188,19 +160,16 @@ public class DE {
         	//for each individual FFN
         	for(int i = 0; i < population.length; i++) {
         		
-        		FeedForwardNet targetVector = population[i];
-        		FeedForwardNet trialVector = new FeedForwardNet(targetVector);
-        		trialVector.setWeights(targetVector.getWeights());
+        		FeedForwardNet targetVector = new FeedForwardNet(population[i]);
 
         		//Evaluate Fitness
         		double targetFitness = targetVector.fitness;
         		
         		//Mutation
-        		trialVector = mutation(targetVector);
+        		FeedForwardNet tempTrial = mutation(targetVector);
         		
         		//Offspring (crossover)
-        		
-        		trialVector = crossover(targetVector,trialVector);
+				FeedForwardNet trialVector = crossover(targetVector,tempTrial);
         		trialVector.updateFitness();
         		
         		double offspringFitness = trialVector.fitness;
@@ -219,7 +188,7 @@ public class DE {
 	
     public static void main(String[] args) {
 		//---------------------------------->GLASS
-		DataSetUp glass = new DataSetUp("data-sets/glass.data", "end", "classification");
+		DataSetUp glass = new DataSetUp("C:/Users/super/OneDrive/Desktop/machine-learning/neural-nets/data-sets/glass.data", "end", "classification");
 		glass.zScoreNormalize();
 
 		int inputLen = glass.getAllData()[0].getNormalizedFeatures().length;
@@ -231,23 +200,23 @@ public class DE {
 //        P1.population[0].evaluate();
 
 		//---------------------------------->SOYBEAN
-		DataSetUp soybean = new DataSetUp("data-sets/soybean-small.data", "endS", "classification");
+		DataSetUp soybean = new DataSetUp("C:/Users/super/OneDrive/Desktop/machine-learning/neural-nets/data-sets/soybean-small.data", "endS", "classification");
 		soybean.zScoreNormalize();
 
 		inputLen = soybean.getAllData()[0].getNormalizedFeatures().length;
 		int[] layersS = {inputLen, 16, 4};
 
-		DE P2 = new DE(20, soybean.getAllData(), layers, true);
+		DE P2 = new DE(20, soybean.getAllData(), layersS, true);
 		P2.DiffEvolution(2000);
 
 		P2.population[0].evaluate();
 
 		//---------------------------------->BREAST CANCER
-		DataSetUp breastCancer = new DataSetUp("data-sets/breast-cancer-wisconsin.data", "endB", "classification");
-		breastCancer.zScoreNormalize();
-
-		inputLen = breastCancer.getAllData()[0].getNormalizedFeatures().length;
-		int[] layersB = {inputLen, 10, 10, 2};
+//		DataSetUp breastCancer = new DataSetUp("data-sets/breast-cancer-wisconsin.data", "endB", "classification");
+//		breastCancer.zScoreNormalize();
+//
+//		inputLen = breastCancer.getAllData()[0].getNormalizedFeatures().length;
+//		int[] layersB = {inputLen, 10, 10, 2};
 
 //        ParticleSwarm P3 = new ParticleSwarm(20, breastCancer.getAllData(), layersB, true);
 //        P3.PSO(10000);
@@ -255,11 +224,11 @@ public class DE {
 //        P3.particles[0].pBest.evaluate();
 
 		//---------------------------------->FOREST FIRES
-		DataSetUp forestFires = new DataSetUp("data-sets/forestfires.data", "endF", "regression");
-		forestFires.zScoreNormalize();
-
-		inputLen = forestFires.getAllData()[0].getNormalizedFeatures().length;
-		int[] layersF = {inputLen, 12, 12, 1};
+//		DataSetUp forestFires = new DataSetUp("data-sets/forestfires.data", "endF", "regression");
+//		forestFires.zScoreNormalize();
+//
+//		inputLen = forestFires.getAllData()[0].getNormalizedFeatures().length;
+//		int[] layersF = {inputLen, 12, 12, 1};
 
 //        DE P4 = new DE(20, forestFires.getAllData(), layersF, false);
 //        P4.DiffEvolution(2000);
@@ -267,11 +236,11 @@ public class DE {
 //        P4.population[0].evaluate();
 
 		//---------------------------------->ABALONE
-		DataSetUp abalone = new DataSetUp("data-sets/abalone.data", "endA", "regression");
-		abalone.zScoreNormalize();
-
-		inputLen = abalone.getAllData()[0].getNormalizedFeatures().length;
-		int[] layersA = {inputLen, 1};
+//		DataSetUp abalone = new DataSetUp("data-sets/abalone.data", "endA", "regression");
+//		abalone.zScoreNormalize();
+//
+//		inputLen = abalone.getAllData()[0].getNormalizedFeatures().length;
+//		int[] layersA = {inputLen, 1};
 
 //        DE G5 = new DE(20, abalone.getAllData(), layersA, false);
 //        G5.DiffEvolution(100);
@@ -279,11 +248,11 @@ public class DE {
 //        G5.population[0].evaluate();
 
 		//---------------------------------->MACHINE
-		DataSetUp machine = new DataSetUp("data-sets/machine.data", "end", "regression");
-		machine.zScoreNormalize();
-
-		inputLen = machine.getAllData()[0].getNormalizedFeatures().length;
-		int[] layersM = {inputLen, 1};
+//		DataSetUp machine = new DataSetUp("data-sets/machine.data", "end", "regression");
+//		machine.zScoreNormalize();
+//
+//		inputLen = machine.getAllData()[0].getNormalizedFeatures().length;
+//		int[] layersM = {inputLen, 1};
 
 //		DE G6 = new DE(20, machine.getAllData(), layersM, false);
 //		G6.DiffEvolution(200);
