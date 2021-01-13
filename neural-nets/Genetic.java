@@ -22,7 +22,7 @@ public class Genetic {
 
 
     /*
-        Tournament selection, k=2 for now
+        Tournament selection, k=2
         Choosing population.length / 2 individuals
      */
     public FeedForwardNet[] selection() {
@@ -152,7 +152,7 @@ public class Genetic {
 
     /*
         Check progress of GA, update fitnesses,
-        maybe sort the population by fitness?
+        sort the population by fitness
      */
     public void evaluate() {
         //update fitness
@@ -199,81 +199,6 @@ public class Genetic {
             if (population[0].fitness < 0.01) { System.out.println("Generations: "+i); break; }
         }
 
-    }
-
-
-    public static void main(String[] args) {
-        //---------------------------------->GLASS
-        DataSetUp glass = new DataSetUp("data-sets/glass.data", "end", "classification");
-        glass.zScoreNormalize();
-
-        int inputLen = glass.getAllData()[0].getNormalizedFeatures().length;
-        int[] layers = {inputLen, 7};
-
-//        Genetic G1 = new Genetic(30, glass.getAllData(), layers, true);
-//        G1.GA(20000);
-//
-//        G1.population[0].evaluate();
-
-        //---------------------------------->SOYBEAN
-        DataSetUp soybean = new DataSetUp("data-sets/soybean-small.data", "endS", "classification");
-        soybean.zScoreNormalize();
-
-        inputLen = soybean.getAllData()[0].getNormalizedFeatures().length;
-        int[] layersS = {inputLen, 12, 12, 4};
-
-//        Genetic G2 = new Genetic(20, soybean.getAllData(), layersS, true);
-//        G2.GA(2000);
-//
-//        G2.population[0].evaluate();
-
-        //---------------------------------->BREAST CANCER
-        DataSetUp breastCancer = new DataSetUp("data-sets/breast-cancer-wisconsin.data", "endB", "classification");
-        breastCancer.zScoreNormalize();
-
-        inputLen = breastCancer.getAllData()[0].getNormalizedFeatures().length;
-        int[] layersB = {inputLen, 2};
-
-//        Genetic G3 = new Genetic(20, breastCancer.getAllData(), layersB, true);
-//        G3.GA(5000);
-//
-//        G3.population[0].evaluate();
-
-        //---------------------------------->FOREST FIRES
-        DataSetUp forestFires = new DataSetUp("data-sets/forestfires.data", "endF", "regression");
-        forestFires.zScoreNormalize();
-
-        inputLen = forestFires.getAllData()[0].getNormalizedFeatures().length;
-        int[] layersF = {inputLen, 12, 1};
-
-//        Genetic G4 = new Genetic(20, forestFires.getAllData(), layersF, false);
-//        G4.GA(2000);
-//
-//        G4.population[0].evaluate();
-
-        //---------------------------------->ABALONE
-        DataSetUp abalone = new DataSetUp("data-sets/abalone.data", "endA", "regression");
-        abalone.zScoreNormalize();
-
-        inputLen = abalone.getAllData()[0].getNormalizedFeatures().length;
-        int[] layersA = {inputLen, 1};
-
-//        Genetic G5 = new Genetic(20, abalone.getAllData(), layersA, false);
-//        G5.GA(2000);
-//
-//        G5.population[0].evaluate();
-
-        //---------------------------------->MACHINE
-        DataSetUp machine = new DataSetUp("data-sets/machine.data", "end", "regression");
-        machine.zScoreNormalize();
-
-        inputLen = machine.getAllData()[0].getNormalizedFeatures().length;
-        int[] layersM = {inputLen, 1};
-
-//        Genetic G6 = new Genetic(20, machine.getAllData(), layersM, false);
-//        G6.GA(2000);
-//
-//        G6.population[0].evaluate();
     }
 
 }
