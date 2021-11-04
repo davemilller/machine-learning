@@ -1,0 +1,156 @@
+//REGULAR KNN---------
+	GLASS--
+		Best k:       17
+		Best epsilon: 1.0689002379957366
+		Best sigma:   2.528492983466091
+		F1 score:     0.3476190476190476	
+	HOUSE--
+		Best k:       6
+		Best epsilon: 2.872718407932047
+		Best sigma:   1.1200345915471803
+		F1 score:     0.5744186046511628
+	SEGMENTATION--
+		Best k:       14
+		Best epsilon: 1.3977126240946063
+		Best sigma:   1.5203279702604562
+		F1 score:     0.195
+	ABALONE--
+		Best k:       16.0
+		Best epsilon: 0.6975608326466589
+		Best sigma:   1.2069715350597747
+		RSME:         3.466990714584134
+	FOREST FIRES--
+		Best k:       15.0
+		Best epsilon: 0.8831745891000276
+		Best sigma:   2.6016871517913938
+		RSME:         46.29360312833555
+	MACHINE--
+		Best k:       16.0
+		Best epsilon: 2.187552019576941
+		Best sigma:   1.3435149749211532
+		RSME:         131.66358640592205
+
+//EDITED KNN---------
+	GLASS--
+		Best k:       2.0
+		Best epsilon: 1.3937541981683155
+		Best sigma:   1.8380314568006957
+		F1 score:     0.3450000000000001
+	HOUSE--
+		Best k:       2.0
+		Best epsilon: 0.5145911404920374
+		Best sigma:   0.661556395939835
+		F1 score:     0.5904761904761904
+	SEGMENTATION--
+		Best k:       8.0
+		Best epsilon: 2.4982427919552754
+		Best sigma:   1.6012241282609756
+		F1 score:     0.18500000000000003
+	ABALONE--
+		Best k:       14.0
+		Best epsilon: 1.416223208881623
+		Best sigma:   1.3601457374979284
+		RSME:         2.2979962119481083
+	FOREST FIRES--
+		Best k:       8.0
+		Best epsilon: 2.1101944989580477
+		Best sigma:   0.5921274186680261
+		RSME:         0.24373971378599563
+	MACHINE--
+		DOES NOT WORK
+
+//CONDENSED KNN---------
+	GLASS--
+		Best k:       9.0
+		Best epsilon: 3.0014756880512508
+		Best sigma:   3.0022970339691053
+		F1 score:     0.32000000000000006
+	HOUSE--
+		Best k:       2.0
+		Best epsilon: 3.0547512455803787
+		Best sigma:   0.941840296510591
+		F1 score:     0.9232558139534884
+	SEGMENTATION--
+		Best k:       9.0
+		Best epsilon: 1.183977760363938
+		Best sigma:   1.206402873728161
+		F1 score:     0.3428571428571428
+	ABALONE--
+		Best k:       11.0
+		Best epsilon: 1.3488532213291429
+		Best sigma:   2.869486467459984
+		RSME:         3.583917025509558
+	FOREST FIRES--
+		Best k:       17.0
+		Best epsilon: 2.748999259726737
+		Best sigma:   2.551969898085776
+		RSME:         39.39261392762351
+	MACHINE--
+		Best k:       10.0
+		Best epsilon: 0.7969074903821212
+		Best sigma:   3.1646960326539193
+		RSME:         136.4684547994685
+
+//K-MEANS AUGMENTED KNN---------
+	GLASS--
+		Best k:       9.0
+		Best epsilon: 3.0692542373004366
+		Best sigma:   2.4804404389160783
+		F1 score:     0.3714285714285714
+	HOUSE--
+		Best k:       14.0
+		Best epsilon: 3.287570895398931
+		Best sigma:   0.3853906191010186
+		F1 score:     0.5560975609756099
+	SEGMENTATION--
+		Best k:       15.0
+		Best epsilon: 1.0358292541692395
+		Best sigma:   3.0340391934971533
+		F1 score:     0.19230769230769232
+	ABALONE--
+		Best k:       14.0
+		Best epsilon: 2.4016659947448646
+		Best sigma:   2.5935169557333193
+		RSME:         3.4523037793707765
+	FOREST FIRES--
+		Best k:       7.0
+		Best epsilon: 1.5687353961267811
+		Best sigma:   1.4750602639449604
+		RSME:         20.592102385330502
+	MACHINE--
+		Best k:       17.0
+		Best epsilon: 2.6492650868978327
+		Best sigma:   0.7911196610159061
+		RSME:         80.59724213284981
+
+//K-MEDOIDS AUGMENTED KNN---------
+	GLASS--
+		Best k:       9.0
+		Best epsilon: 2.915755715639286
+		Best sigma:   2.662431545242511
+		F1 score:     0.35
+	HOUSE--
+		Best k:       4.0
+		Best epsilon: 2.419204378532112
+		Best sigma:   2.942782606731679
+		F1 score:     0.5902439024390244
+	SEGMENTATION--
+		Best k:       11.0
+		Best epsilon: 1.0993207158625322
+		Best sigma:   3.103740360271558
+		F1 score:     0.18461538461538457
+	ABALONE--
+		Best k:       18.0
+		Best epsilon: 0.9638369945475564
+		Best sigma:   3.1034982236659525
+		RSME:         3.499462310915508
+	FOREST FIRES--
+		Best k:       7.0
+		Best epsilon: 3.148454718649802
+		Best sigma:   1.4063153995094844
+		RSME:         23.658380921185188
+	MACHINE--
+		Best k:       8.0
+		Best epsilon: 2.1705259737277904
+		Best sigma:   0.3870376944975074
+		RSME:         77.97257873393605

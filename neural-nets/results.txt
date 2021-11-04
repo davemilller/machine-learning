@@ -1,0 +1,100 @@
+GENETIC=================================
+
+GLASS-----------------Pop: 30
+	0 HIDDEN: 0.728, 20,000 generations
+	1 HIDDEN, 16 nodes: 0.962, 20,000 generations
+	2 HIDDEN, 12 nodes, 12 nodes: 0.966, 20,000 generations
+
+Soy-----------------Pop: 20
+	0 HIDDEN: 1.0, 295 generations
+	1 HIDDEN, 20 nodes: 1.0, 643 generations
+	2 HIDDEN, 12 nodes, 12 nodes: 1.0, 906 generations
+
+breast-----------------Pop: 20
+	0 HIDDEN: 0.979, 5000 generations
+	1 HIDDEN, 16 nodes: 0.991, 2000 generations
+	2 HIDDEN, 10 nodes, 10 nodes: 0.991, 1962 generations
+
+forest fires-----------------Pop: 20
+	0 HIDDEN: MSE: 0.0035, 50 generations
+	1 HIDDEN, 16 nodes: MSE: 0.0034, 10 generations
+	2 HIDDEN, 16 nodes, 16 nodes: MSE: 0.0034, 10 generations
+
+abalone-----------------Pop: 20
+	0 HIDDEN: MSE: 0.0096, 51 generations
+	1 HIDDEN, 20 nodes: MSE: 0.0098, 52 generations 
+	2 HIDDEN, 12 nodes, 12 nodes: MSE: 0.0097, 227 generations
+
+machine-----------------Pop: 20
+	0 HIDDEN: MSE: 0.0097, 6 generations
+	1 HIDDEN, 16 nodes: MSE: 0.0089, 79 generations 
+	2 HIDDEN, 16 nodes, 16 nodes: MSE: 0.0099, 349 generations
+
+
+
+PSO=====================================================
+
+GLASS-----------------Pop: 30
+	0 HIDDEN: 0.609, 8000 generations
+	1 HIDDEN, 16 nodes: 0.471, 8000 generations
+	2 HIDDEN, 12 nodes, 12 nodes: 0.5, 8000 generations
+
+Soy-----------------Pop: 20
+	0 HIDDEN: 1.0, 8000 generations
+	1 HIDDEN, 20 nodes: 0.975, 8000 generations
+	2 HIDDEN, 12 nodes, 12 nodes: 1.0, 8000 generations
+
+breast-----------------Pop: 20
+	0 HIDDEN: 0.968, 10,000 generations
+	1 HIDDEN, 16 nodes: 0.962, 10,000 generations
+	2 HIDDEN, 10 nodes, 10 nodes: 0.958, 10,000 generations
+
+forest fires-----------------Pop: 20
+	0 HIDDEN: MSE: 0.0041, 13 generations
+	1 HIDDEN, 16 nodes: MSE: 0.0034, 10 generations
+	2 HIDDEN, 16 nodes, 16 nodes: MSE: 0.0034, 10 generations
+
+abalone-----------------Pop: 20
+	0 HIDDEN: MSE: 0.009, 33 generations
+	1 HIDDEN, 20 nodes: MSE: 0.008, 22 generations 
+	2 HIDDEN, 12 nodes, 12 nodes: MSE: 0.009, 112 generations
+
+machine-----------------Pop: 20
+	0 HIDDEN: MSE: 0.007, 33 generations
+	1 HIDDEN, 16 nodes: MSE: 0.007, 122 generations 
+	2 HIDDEN, 16 nodes, 16 nodes: MSE: 0.008, 89 generations
+
+
+
+
+DE=====================================================
+
+GLASS-----------------Pop: 30
+	0 HIDDEN: 0.048, no convergence
+	1 HIDDEN, 16 nodes: 0.0, no convergence
+	2 HIDDEN, 12 nodes, 12 nodes: 0.042, no convergence
+
+Soy-----------------Pop: 20
+	0 HIDDEN: no convergence
+	1 HIDDEN, 20 nodes: no convergence
+	2 HIDDEN, 12 nodes, 12 nodes: no convergence
+
+breast-----------------Pop: 20
+	0 HIDDEN: no convergence
+	1 HIDDEN, 16 nodes: no convergence
+	2 HIDDEN, 10 nodes, 10 nodes: no convergence
+
+forest fires-----------------Pop: 20
+	0 HIDDEN: MSE: 0.0037, 19 generations
+	1 HIDDEN, 16 nodes: MSE: 0.0034, 23 generations
+	2 HIDDEN, 16 nodes, 16 nodes: MSE: 0.0034, 54 generations
+
+abalone-----------------Pop: 20
+	0 HIDDEN: MSE: 0.122, 200 generations
+	1 HIDDEN, 20 nodes: MSE: 0.125, 200 generations 
+	2 HIDDEN, 12 nodes, 12 nodes: MSE: 0.123, 200 generations
+
+machine-----------------Pop: 20
+	0 HIDDEN: MSE: 0.041, 200 generations
+	1 HIDDEN, 16 nodes: MSE: 0.033, 200 generations 
+	2 HIDDEN, 16 nodes, 16 nodes: MSE: 0.032, 200 generations
